@@ -35,30 +35,25 @@ def abertura():
     print("************************************\n Bem vindo ao jogo da forca\n************************************ \n")
 
 def carrega_palavra():
-    arquivo = open("palavras.txt", encoding='utf-8', mode="r")
-    palavras = []
+    with open("palavras.txt", encoding='utf-8', mode="r") as arquivo:
+        palavras = []
 
-    for linha in arquivo:
-        linha = linha.strip()
-        palavras.append(linha)
-    arquivo.close()
-
+        for linha in arquivo:
+            linha = linha.strip()
+            palavras.append(linha)
     numero = random.randrange(0,len(palavras))
 
 
-    palavra_secreta = palavras[numero]
-    return palavra_secreta
+    return palavras[numero]
 
 def letras_acertada(palavra):
-    return  ["_" for letra in palavra]
+    return ["_" for _ in palavra]
 
 def verfica_chute(chute, palavra_secreta, lista_acertada):
-        index = 0
-        for letra in palavra_secreta:
-            if (chute.upper() == letra.upper()):
-                lista_acertada[index] = letra
-                print(f"Encontrei a letra {letra} na posição {index}")
-            index += 1
+    for index, letra in enumerate(palavra_secreta):
+        if (chute.upper() == letra.upper()):
+            lista_acertada[index] = letra
+            print(f"Encontrei a letra {letra} na posição {index}")
 
 
 def mensagem_final(acertou, palavra_secreta):

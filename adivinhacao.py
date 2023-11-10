@@ -26,13 +26,13 @@ def jogar():
             continue
 
         acertou = chute_input == num_secreto
-        maior = chute_input > num_secreto
-        menor = chute_input < num_secreto
-
-        if (acertou):
+        if acertou:
             print(f"Você acertou o número secreto que era {num_secreto} e fez {pontos} pontos")
             break
         else:
+
+            maior = chute_input > num_secreto
+            menor = chute_input < num_secreto
 
             if (maior):
                 print(f"Você errou, {chute_input} é maior que o número secreto")
